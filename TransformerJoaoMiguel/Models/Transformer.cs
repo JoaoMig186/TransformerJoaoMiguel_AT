@@ -15,7 +15,7 @@ namespace TransformerJoaoMiguel.Models
         [Microsoft.Build.Framework.Required]
         [Range(1, 10, ErrorMessage = "A Força de Ataque deve estar entre 1 e 10.")]
         public int ForcaDeAtaque { get; set; }
-
+        public DateTime dataCriacao { get; set; } = DateTime.Now;
         [Microsoft.Build.Framework.Required]
         public int TipoTransformerId { get; set; }
         public TipoTransformer? TipoTransformer { get; set; }
