@@ -1,0 +1,59 @@
+﻿@model TransformerJoaoMiguel.Models.Transformer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Transformer</h4>
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.Imagem))
+            {
+                @if (Model.Imagem.StartsWith("/") || Model.Imagem.StartsWith("http"))
+                {
+                    <img src="@Model.Imagem" alt="Car Image" style="max-width: 70px; max-height: 70px; border-radius: 15px;" />
+                }
+                else
+                {
+                    <img src="~/imagens/@Model.Imagem" alt="Car Image" style="max-width: 70px; max-height: 70px; border-radius: 15px;" />
+                }
+            }
+            else
+            {
+                <span>Sem imagem</span>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Veiculo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Veiculo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ForcaDeAtaque)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ForcaDeAtaque)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoTransformer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoTransformer.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

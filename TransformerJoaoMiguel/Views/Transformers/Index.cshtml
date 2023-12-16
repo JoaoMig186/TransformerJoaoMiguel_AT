@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TransformerJoaoMiguel.Models.Transformer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Veiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ForcaDeAtaque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoTransformer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+               <td>
+                       @if (!string.IsNullOrEmpty(item.Imagem)) {
+                        @if (item.Imagem.StartsWith("/") || item.Imagem.StartsWith("http")) {
+                   <img src="@item.Imagem" alt="Car Image" style="max-width: 90px; max-height: 90px; border-radius: 15px" />
+               } else {
+                            <img src="~/imagens/@item.Imagem" alt="Car Image" style="max-width: 90px; max-height: 90px; border-radius: 15px" />
+               }
+                       }
+            else {
+                <span>No Image</span>
+            }
+       </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Veiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ForcaDeAtaque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoTransformer.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
